@@ -1,0 +1,131 @@
+---
+- summary: |
+    Регистрация нового пользователя
+  requirement: |
+    При заполнении полей: Nickname, Email, Password,Password Confirmation должна пройти регистрация и авторизация
+  prerequisites: |
+   "no-data"
+  test-data: |
+    Тестовые данные
+    Nickname = smowin10 Email = smowin10@gmail.com Password = 1234567@
+  steps:
+    - Вводим Nickname
+    - Вводим Email
+    - Вводим Password
+    - Нажимаем кнопку «Submit»
+  expected-result: |
+    Пользователь должен попасть на главную страницу
+
+- summary: |
+    Проверка входа пользователя с существующими логином и паролем
+  requirement: |
+    При верном вводе логине и пароля пользователь должен войти в систему
+  prerequisites: |
+    Jткрыта страница логина
+  test-data: |
+    Тестовые данные
+    Email = smowin10@gmail.com Password = 1234567@
+  steps:
+    - Вводим Email
+    - Вводим Password
+    - Нажимаем кнопку 'Submit'
+  expected-result: |
+    Пользователь должен попасть на главную страницу
+
+- summary: |
+    Проверка входа пользователя с несуществующими логином и паролем
+  requirement: |
+    При неправильном логине или пароле пользователь должен получить сообщение об ошибке
+  prerequisites:
+    Открыта страница логина
+  test-data: |
+    Email = smowin20@gmail.com Password = 1234567@
+  steps:
+    - Вводим Email
+    - Вводим Password
+    - Нажимаем кнопку 'Submit'
+  expected-result: |
+    Пользователь должен получить сообщение об ошибке
+
+- summary: |
+    Регистрация нового пользователя с помощью аккаунта GitHub
+  requirement: |
+    При верном вводе логине и пароля пользователь должен войти в систему
+  prerequisites: |
+    Зарегистрировать аккаунт на GitHub
+  test-data: |
+    Тестовые данные
+    Email = smowin10@gmail.com Password = 1234567@
+  steps:
+    - Нажимаем на кнопку 'Sign up with GitHub'
+    - Вводим Email
+    - Вводим Password
+    - Нажимаем кнопку 'sign up'
+  expected-result: |
+    Пользователь должен попасть на главную страницу c зарегистрированным аккаунтом
+
+- summary: |
+    Создание новой игры
+  requirement: |
+    Выбрать уровень, тип игры, время, задание и нажать на кнопку 'create battle'
+  prerequisites: |
+    Успешная авторизация
+  test-data: |
+    "no-data"
+  steps:
+    - Выбрать Level = одна звезда
+    - Выбрать Game Type = with bot
+    - Выбрать Time control = 8 min
+    - Выбрать Choose task by name or tags = random task
+    - Нажать кнопку create battle
+  expected-result: |
+    Пользователь должен попасть на страницу боя с ботоп по заданному заданию
+
+- summary: |
+    Проверка работоспособности игрового поля
+  requirement: |
+    Выигать битву с помощью написания кода
+  prerequisites: |
+    Быть авторизованным. Создайте новую игру против бота.Создайте задачу по поиску площади прямоугольника. Для решения задачи можете выбрать язык NodeJS и дописать код
+  test-data: |
+    "const _ = require("lodash");
+const R = require("rambda");
+
+const solution = (width, length) => {
+  return width * length;
+};
+"
+  steps:
+    - Ввести данные 
+    - Нажать кнопку 'run'
+  expected-result: |
+    Должно появится окно с надписью 'Woohoo, you're Champion!!!!!'
+ 
+- summary: |
+    Досрочное завершение игры
+  requirement: |
+    Нажать на кнопку 'Give up' после чего бой завершится
+  prerequisites: |
+    Быть авторизованным. Создайте новую игру против бота.Создайте задачу по поиску площади прямоугольника.
+  test-data: |
+    "no-data"
+  steps:
+    - Нажать 'три точки'
+    - Нажать кнопку 'Give up'
+    - Подтвердить выбор нажав на красную кнопку 'Give up'
+  expected-result: |
+    Бой завершится и появится надпись 'If you read this you've lost the game'
+
+- summary: |
+    Отправка сообщения в чат
+  requirement: |
+   Внизу главной страницы в поле чата отправить привет
+  prerequisites: |
+   Быть авторизованным
+  test-data: |
+    "no-data"
+  steps:
+    -  Написать в поле соощения 'привет'
+    - Нажать кнопку 'send'
+  expected-result: |
+   Сообщение 'привет' отображается в чате
