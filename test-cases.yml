@@ -90,13 +90,12 @@
   prerequisites: |
     Быть авторизованным. Создайте новую игру против бота.Создайте задачу по поиску площади прямоугольника. Для решения задачи можете выбрать язык NodeJS и дописать код
   test-data: |
-   ""const _ = require("lodash");
+   ("const _ = require("lodash");
 const R = require("rambda");
 
 const solution = (width, length) => {
   return width * length;
-};
-""
+};)
   steps:
     - Ввести данные ""const _ = require("lodash");
 const R = require("rambda");
